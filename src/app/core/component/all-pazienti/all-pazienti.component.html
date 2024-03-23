@@ -1,2 +1,28 @@
 <p>all-pazienti works!</p>
 <button (click)="goToDashbord()">Test</button>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>DataNascita</th>
+        <th>Medico</th>
+        <th>CodiceColore</th>
+        <th>Stato</th>
+        <th>Arrivo</th>
+        <th>CodicePaziente</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let paz of $pazienti | async">
+            <td>{{paz.Id}}</td>
+            <td>{{paz.Nome}}</td>
+            <td>{{paz.Cognome}}</td>
+            <td>{{paz.DataNascita}}</td>
+            <td>{{paz.Medico}}</td>
+            <td>{{paz.CodiceColore}}</td>
+            <td>{{paz.Stato}}</td>
+            <td>{{paz.Arrivo}}</td>
+            <td>{{paz.CodicePaziente}}</td>
+        </tr>
+    </tbody>
+</table>
