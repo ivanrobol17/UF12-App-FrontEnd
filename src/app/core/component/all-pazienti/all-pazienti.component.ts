@@ -15,11 +15,30 @@ import { Observable } from 'rxjs';
 })
 export class AllPazientiComponent {
   constructor(private router:Router, private coreHttp:CoreHttpService){}
-  $pazienti: Observable<paziente[]>;
+  $pazienti: paziente[];
+  stampaErrore: unknown;
   ngOnInit(){ 
-    this.$pazienti=this.coreHttp.get<paziente[]>('/getAllPatients')
+    this.getAllPazienti()
   }  
   goToDashbord(){
     this.router.navigate(['/'])
+  }
+  getAllPazienti(){
+    this.coreHttp.get<paziente[]>('/getAllPazienti').subscribe((ris: paziente[])=>{
+      this.$pazienti=ris
+    }
+    )
+  }
+  modificaPaz(paziente: paziente){
+    this.coreHttp.put<paziente[]>('/UpdatePaziente/'+paziente.Id, paziente).subscribe((ris: paziente[])=>{
+      this.$pazienti=ris
+    })
+    this.getAllPazienti()
+  }
+  eliminaPaz(paziente: paziente){
+    this.coreHttp.delete<paziente[]>('/DeletePazienti/'+paziente.Id).subscribe((ris: paziente[])=>{
+      this.$pazienti=ris
+    })
+    this.getAllPazienti()
   }
 }

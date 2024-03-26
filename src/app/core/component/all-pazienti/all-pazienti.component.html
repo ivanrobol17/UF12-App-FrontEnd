@@ -1,6 +1,9 @@
 <p>all-pazienti works!</p>
+<!-- @if(stampaErrore && stampaErrore!=undefined){
+   <p>Errore: {{stampaErrore.message}}</p>
+} -->
 <button (click)="goToDashbord()">Test</button>
-<table>
+<table *ngIf="$pazienti">
     <thead>
         <th>Id</th>
         <th>Nome</th>
@@ -13,16 +16,23 @@
         <th>CodicePaziente</th>
     </thead>
     <tbody>
-        <tr *ngFor="let paz of $pazienti | async">
-            <td>{{paz.Id}}</td>
-            <td>{{paz.Nome}}</td>
-            <td>{{paz.Cognome}}</td>
-            <td>{{paz.DataNascita}}</td>
-            <td>{{paz.Medico}}</td>
-            <td>{{paz.CodiceColore}}</td>
-            <td>{{paz.Stato}}</td>
-            <td>{{paz.Arrivo}}</td>
-            <td>{{paz.CodicePaziente}}</td>
-        </tr>
+        @for(paz of $pazienti; track paz.Id){
+            <tr>
+                <td>{{paz.Id}}</td>
+                <td>{{paz.Nome}}</td>
+                <td>{{paz.Cognome}}</td>
+                <td>{{paz.DataNascita}}</td>
+                <td>{{paz.Medico}}</td>
+                <td>{{paz.CodiceColore}}</td>
+                <td>{{paz.Stato}}</td>
+                <td>{{paz.Arrivo}}</td>
+                <td>{{paz.CodicePaziente}}</td>
+                <td><button (click)="modificaPaz(paz)">Modifica</button></td>
+                <td><button (click)="eliminaPaz(paz)">Elimina</button></td>
+            </tr>
+        }
+        @empty {
+            <tr><td>NON CI SONO VALORI</td></tr>
+        }
     </tbody>
 </table>
