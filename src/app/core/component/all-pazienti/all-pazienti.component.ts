@@ -30,14 +30,12 @@ export class AllPazientiComponent {
     )
   }
   modificaPaz(paziente: paziente){
-    this.coreHttp.put<paziente[]>('/UpdatePaziente/'+paziente.Id, paziente).subscribe((ris: paziente[])=>{
-      this.$pazienti=ris
+    this.coreHttp.put<paziente>('/UpdatePaziente/'+paziente.Id, paziente).subscribe((ris: paziente)=>{
     })
     this.getAllPazienti()
   }
   eliminaPaz(paziente: paziente){
-    this.coreHttp.delete<paziente[]>('/DeletePazienti/'+paziente.Id).subscribe((ris: paziente[])=>{
-      this.$pazienti=ris
+    this.coreHttp.delete<paziente>('/DeletePazienti/'+paziente.Id).subscribe((ris: paziente)=>{
     })
     this.getAllPazienti()
   }
