@@ -1,0 +1,38 @@
+<p>contatori-paz works!</p>
+<button (click)="goToDashbord()">Test</button>
+<h2>Num Pazienti in cura</h2>
+<table>
+    <thead>
+        <th>Codice</th>
+        <th>Num</th>
+    </thead>
+    <tbody>
+        @for(paz of $numPazInCura; track paz.CodiceColore){
+            <tr>
+                <td>{{paz.CodiceColore}}</td>
+                <td>{{paz.num}}</td>
+            </tr>
+        }
+        @empty {
+            <tr><td>NON CI SONO VALORI</td></tr>
+        }
+    </tbody>
+</table>
+<h2>Num Pazienti in attesa</h2>
+<table >
+    <thead>
+        <th>Codice</th>
+        <th>Num</th>
+    </thead>
+    <tbody>
+        @for(paz of $numPazInAttesa; track paz.CodiceColore){
+            <tr>
+                <td>{{paz.CodiceColore}}</td>
+                <td>{{paz.num}}</td>
+            </tr>
+        }
+        @empty {
+            <tr><td>NON CI SONO VALORI</td></tr>
+        }
+    </tbody>
+</table>

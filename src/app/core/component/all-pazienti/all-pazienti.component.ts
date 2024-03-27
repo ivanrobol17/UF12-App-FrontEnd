@@ -24,7 +24,7 @@ export class AllPazientiComponent {
     this.router.navigate(['/'])
   }
   getAllPazienti(){
-    this.coreHttp.get<paziente[]>('/getAllPazienti').subscribe((ris: paziente[])=>{
+    this.coreHttp.get<paziente[]>('/getPazientiNonDimessi').subscribe((ris: paziente[])=>{
       this.$pazienti=ris
     }
     )

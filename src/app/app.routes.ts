@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { DashbordComponent } from './core/component/dashbord/dashbord.component';
 
 export const routes: Routes = [
     {
@@ -17,6 +16,12 @@ export const routes: Routes = [
         path:'all-patient',
         loadComponent() {
             return import('./core/component/all-pazienti/all-pazienti.component').then(m => m.AllPazientiComponent)
+        }
+    },
+    {
+        path:'contatori-paz',
+        loadComponent() {
+            return import('./core/component/contatori-paz/contatori-paz.component').then(m => m.ContatoriPazComponent)
         }
     },
 ];
