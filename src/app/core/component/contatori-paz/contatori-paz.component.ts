@@ -2,36 +2,28 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { numPaz } from '../../interface/num-paz';
 import { CoreHttpService } from '../../service/coreHttp/core-http.service';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contatori-paz',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './contatori-paz.component.html',
   styleUrl: './contatori-paz.component.css'
 })
 export class ContatoriPazComponent {
-  constructor(private router:Router, private coreHttp:CoreHttpService){}
-  $numPazInCura: numPaz[];
-  $numPazInAttesa: numPaz[];
-  stampaErrore: unknown;
-  ngOnInit(){ 
-    this.getNumPazInCura()
-    this.getNumPazInAttesa()
-  }  
-  goToDashbord(){
+  constructor(private router: Router, private coreHttp: CoreHttpService) { }
+  $contatoriPaz: numPaz[];
+  ngOnInit() {
+    this.getContatori()
+  }
+  goToDashbord() {
     this.router.navigate(['/'])
   }
-  getNumPazInCura(){
-    this.coreHttp.get<numPaz[]>('/getContatoriPazInCura').subscribe((ris: numPaz[])=>{
-      this.$numPazInCura=ris
-    }
-    )
-  }
-  getNumPazInAttesa(){
-    this.coreHttp.get<numPaz[]>('/getContatoriPazInAttesa').subscribe((ris: numPaz[])=>{
-      this.$numPazInAttesa=ris
-    }
-    )
+  getContatori() {
+    this.coreHttp.get<numPaz[]>('/getContatoriCuraAttesa').subscribe(ris=>{
+      this.$contatoriPaz = ris
+    })
   }
 }
