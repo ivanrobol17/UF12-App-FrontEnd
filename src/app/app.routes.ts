@@ -24,4 +24,10 @@ export const routes: Routes = [
             return import('./core/component/contatori-paz/contatori-paz.component').then(m => m.ContatoriPazComponent)
         }
     },
+    {
+        path:'paziente/:id',
+        loadComponent() {
+            return import('./core/component/paziente/paziente.component').then(m => m.PazienteComponent)
+        }
+    },
 ];

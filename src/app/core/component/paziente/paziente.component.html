@@ -1,0 +1,15 @@
+<p>paziente works!</p>
+<div *ngIf="$paziente">
+    <h4>Ogni modifica non ha effetti sul db</h4>
+    <p>Id:</p><input type="number" min="1" [value]="$paziente.Id" disabled>
+    <p>Nome:</p><input [value]="$paziente.Nome">
+    <p>Cognome:</p><input [value]="$paziente.Cognome">
+    <p>Data Nascita:</p><input type="datetime" [value]="$paziente.DataNascita">
+    <p>Medico:</p><input [value]="$paziente.Medico">
+    <p>Codice Colore:</p><input [value]="$paziente.CodiceColore">
+    <p>Stato:</p><input type="number" min="1" max="62" [value]="$paziente.Stato">
+    <p>Arrivo:</p><input [value]="$paziente.Arrivo">
+    <p>Codice Paziente:</p><input [value]="$paziente.CodicePaziente">
+    <button>Qualcosa</button>
+    <button (click)="annulla()">Annulla</button>
+</div>

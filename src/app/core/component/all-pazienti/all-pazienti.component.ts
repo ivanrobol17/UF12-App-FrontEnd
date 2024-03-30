@@ -30,9 +30,7 @@ export class AllPazientiComponent {
     )
   }
   modificaPaz(paziente: paziente){
-    this.coreHttp.put<paziente>('/UpdatePaziente/'+paziente.Id, paziente).subscribe((ris: paziente)=>{
-    })
-    this.getAllPazienti()
+    this.router.navigate(['/paziente/'+paziente.Id])
   }
   eliminaPaz(paziente: paziente){
     this.coreHttp.delete<paziente>('/DeletePazienti/'+paziente.Id).subscribe((ris: paziente)=>{
