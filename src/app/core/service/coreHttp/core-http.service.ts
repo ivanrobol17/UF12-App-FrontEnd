@@ -8,7 +8,7 @@ import { paziente } from '../../interface/paziente';
 })
 export class CoreHttpService {
 
-  private BaseUrl = 'https://pncsf5uw41.execute-api.us-east-1.amazonaws.com'
+  private BaseUrl = 'https://pncsf5uw41.execute-api.us-east-1.amazonaws.com/'
   constructor(private http: HttpClient) { }
 
   public get<T=unknown>(url: string): Observable<T>{

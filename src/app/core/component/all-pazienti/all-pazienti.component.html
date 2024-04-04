@@ -5,28 +5,26 @@
 <button (click)="goToDashbord()">Test</button>
 <table *ngIf="$pazienti">
     <thead>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Cognome</th>
-        <th>DataNascita</th>
-        <th>Medico</th>
+        <th>idPaziente</th>
+        <th>nomePaziente</th>
+        <th>cognomePaziente</th>
         <th>CodiceColore</th>
         <th>Stato</th>
-        <th>Arrivo</th>
-        <th>CodicePaziente</th>
+        <th>CodiceColore</th>
+        <th>IdMedico</th>
+        <th>IdMedico</th>
     </thead>
     <tbody>
-        @for(paz of $pazienti; track paz.Id){
+        @for(paz of $pazienti; track paz.idPaziente){
             <tr>
-                <td>{{paz.Id}}</td>
-                <td>{{paz.Nome}}</td>
-                <td>{{paz.Cognome}}</td>
-                <td>{{paz.DataNascita}}</td>
-                <td>{{paz.Medico}}</td>
+                <td>{{paz.idPaziente}}</td>
+                <td>{{paz.nomePaziente}}</td>
+                <td>{{paz.cognomePaziente}}</td>
                 <td>{{paz.CodiceColore}}</td>
                 <td>{{paz.Stato}}</td>
-                <td>{{paz.Arrivo}}</td>
-                <td>{{paz.CodicePaziente}}</td>
+                <td>{{paz.CodiceColore}}</td>
+                <td>{{paz.IdMedico}}</td>
+                <td>{{paz.IdMedico}}</td>
                 <td><button (click)="modificaPaz(paz)">Modifica</button></td>
                 <td><button (click)="eliminaPaz(paz)">Dimetti</button></td>
             </tr>

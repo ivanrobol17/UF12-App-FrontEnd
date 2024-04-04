@@ -4,6 +4,7 @@ import { CoreHttpService } from '../../service/coreHttp/core-http.service';
 import { CommonModule } from '@angular/common';
 import { paziente } from '../../interface/paziente';
 import { Observable } from 'rxjs';
+import { AllPazienti } from '../../interface/all-pazienti';
 
 @Component({
   selector: 'app-all-pazienti',
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class AllPazientiComponent {
   constructor(private router:Router, private coreHttp:CoreHttpService){}
-  $pazienti: paziente[];
+  $pazienti: AllPazienti[];
   stampaErrore: unknown;
   ngOnInit(){ 
     this.getAllPazienti()
@@ -24,16 +25,16 @@ export class AllPazientiComponent {
     this.router.navigate(['/'])
   }
   getAllPazienti(){
-    this.coreHttp.get<paziente[]>('/getPazientiNonDimessi').subscribe((ris: paziente[])=>{
+    this.coreHttp.get<AllPazienti[]>('/getPazientiNonDimessi').subscribe((ris: AllPazienti[])=>{
       this.$pazienti=ris
     }
     )
   }
-  modificaPaz(paziente: paziente){
-    this.router.navigate(['/paziente/'+paziente.Id])
+  modificaPaz(paziente: AllPazienti){
+    this.router.navigate(['/paziente/'+paziente.idPaziente])
   }
-  eliminaPaz(paziente: paziente){
-    this.coreHttp.delete<paziente>('/DeletePazienti/'+paziente.Id).subscribe((ris: paziente)=>{
+  eliminaPaz(paziente: AllPazienti){
+    this.coreHttp.delete<paziente>('/DeletePazienti/'+paziente.idPaziente).subscribe((ris: paziente)=>{
     })
     this.getAllPazienti()
   }
