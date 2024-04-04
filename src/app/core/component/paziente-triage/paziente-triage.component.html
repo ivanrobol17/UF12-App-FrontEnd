@@ -1,0 +1,36 @@
+<p>paziente-triage works!</p>
+<button (click)="goToDashbord()">Test</button>
+<table *ngIf="$persone">
+    <thead>
+        <th>CF</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>DataNascita</th>
+        <th>LuogoNascita</th>
+        <th>NumTel</th>
+        <th>Citta</th>
+        <th>Via</th>
+        <th>NumCivico</th>
+        <th>CAP</th>
+    </thead>
+    <tbody>
+        @for(paz of $persone; track paz.CF){
+            <tr>
+                <td>{{paz.CF}}</td>
+                <td>{{paz.Nome}}</td>
+                <td>{{paz.Cognome}}</td>
+                <td>{{paz.DataNascita}}</td>
+                <td>{{paz.LuogoNascita}}</td>
+                <td>{{paz.NumTel}}</td>
+                <td>{{paz.Citta}}</td>
+                <td>{{paz.Via}}</td>
+                <td>{{paz.NumCivico}}</td>
+                <td>{{paz.CAP}}</td>
+                <td><button>Seleziona</button></td>
+            </tr>
+        }
+        @empty {
+            <tr><td>NON CI SONO VALORI</td></tr>
+        }
+    </tbody>
+</table>

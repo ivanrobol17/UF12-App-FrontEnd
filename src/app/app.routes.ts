@@ -30,4 +30,10 @@ export const routes: Routes = [
             return import('./core/component/paziente/paziente.component').then(m => m.PazienteComponent)
         }
     },
+    {
+        path:'personeTriage',
+        loadComponent() {
+            return import('./core/component/paziente-triage/paziente-triage.component').then(m => m.PazienteTriageComponent)
+        }
+    },
 ];
